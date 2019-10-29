@@ -2,7 +2,7 @@ package com.uday.multithreading;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class MyThreadPool {
+public class MyThreadPoolToo {
 	
 	int size;
 	
@@ -10,7 +10,7 @@ public class MyThreadPool {
 	
 	LinkedBlockingQueue<Runnable> queue; 
 	
-	public MyThreadPool(int size){
+	public MyThreadPoolToo(int size){
 		this.size = size;
 		queue = new LinkedBlockingQueue<>();
 		tArr = new Worker[size];
@@ -45,7 +45,7 @@ public class MyThreadPool {
 	}
 	
 	public static void main(String[] args){
-		MyThreadPool pool = new MyThreadPool(2);
+		MyThreadPoolToo pool = new MyThreadPoolToo(2);
 		Runnable r1 = pool.new Task("T1");
 		Runnable r2 = pool.new Task("T2");
 		Runnable r3 = pool.new Task("T3");
