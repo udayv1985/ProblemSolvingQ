@@ -3,6 +3,10 @@ package com.uday.dp;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Given a rod of length n inches and an array of prices that contains prices of all pieces of size smaller than n.
+ * Determine the maximum value obtainable by cutting up the rod and selling the pieces
+ */
 public class RodCutting {
 	
 	static Map<Integer,Integer> mem = new LinkedHashMap<>();
@@ -38,10 +42,10 @@ public class RodCutting {
 	
 	 public static void main(String args[]) 
 	    { 
-	        int arr[] = new int[] {3, 5, 8, 9, 10, 17, 17, 20}; 
+	        int arr[] = new int[] {3, 5, 8, 9, 10, 17, 17, 20,200};
 	        int size = arr.length; 
 	        System.out.println("Maximum Obtainable Value is " + 
-	        		maxPriceBottomUp(arr, size)); 
+	        		maxPriceBottomUp(arr, size));
 	        mem.entrySet().stream().forEach(
 	        		e->System.out.println(e.getKey()+":"+e.getValue()));
 	    } 

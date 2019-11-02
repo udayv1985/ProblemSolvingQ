@@ -47,7 +47,7 @@ public class LongestPalindromicSS {
 		
 		for(int i =0; i<n; i++){
 			for(int k =0; k<i; k++){
-				mem[k][i] = mem[i+1][k-1] +2;
+				mem[i][k] = mem[i+1][k-1] +2;
 				Math.max(mem[i+1][k], mem[i][k-1]);
 			}
 		}

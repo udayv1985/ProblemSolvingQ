@@ -1,5 +1,8 @@
 package com.uday.ds.bst;
 
+import apple.laf.JRSUIUtils;
+
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Practice {
@@ -36,7 +39,23 @@ public class Practice {
 		BST bst = new BST(n1);
 		//rightView(bst);
 		//levelT(bst);
-		zigzag(bst);
+		//zigzag(bst);
+		boundaryTransversal(bst);
+
+		BST tree = new BST(new TreeNode(20));
+		tree.root.left = new TreeNode(8);
+		tree.root.left.left = new TreeNode(4);
+		tree.root.left.right = new TreeNode(12);
+		tree.root.left.right.left = new TreeNode(10);
+		tree.root.left.right.right = new TreeNode(14);
+		tree.root.right = new TreeNode(22);
+		tree.root.right.right = new TreeNode(25);
+		boundaryTransversal(tree);
+
+		int[] a = new int[5];
+		int i =0;
+		a[i]= (++i);
+		System.out.println(Arrays.toString(a));
 	}
 	
 	public static int height(TreeNode n){
@@ -105,6 +124,62 @@ public class Practice {
 			System.out.println();
 		}
 		
+	}
+
+	public static void boundaryTransversal(BST bst){
+		printNodeWithComma(bst.getRoot());
+		leftBoundaryExcludingLeaves(bst.getRoot().left);
+		printLeaves(bst.getRoot());
+		rightBoundaryExcludingLeavesToRoot(bst.getRoot().right);
+		System.out.println();
+
+	}
+
+	public static void printLeaves(TreeNode node){
+		if(null == node){
+			return;
+		}
+		if(null == node.left && null == node.right){
+			printNodeWithComma(node);
+		}
+		printLeaves(node.left);
+		printLeaves(node.right);
+	}
+
+	private static void leftBoundaryExcludingLeaves(TreeNode node){
+		if(null == node){
+			return;
+		}
+		if(null != node.left){
+			printNodeWithComma(node);
+			leftBoundaryExcludingLeaves(node.left);
+		}
+		else if(null != node.right){
+			printNodeWithComma(node);
+			leftBoundaryExcludingLeaves(node.right);
+		}
+
+	}
+
+	private static void rightBoundaryExcludingLeavesToRoot(TreeNode node){
+		if(null == node){
+			return;
+		}
+		if(null != node.right){
+			rightBoundaryExcludingLeavesToRoot(node.right);
+			printNodeWithComma(node);
+		}
+
+
+
+		else if(null != node.left){
+			rightBoundaryExcludingLeavesToRoot(node.left);
+			printNodeWithComma(node);
+		}
+	}
+
+	private static void printNodeWithComma(TreeNode node){
+		System.out.print(node.getData()+",");
 	}
 
 }

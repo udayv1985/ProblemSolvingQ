@@ -1,4 +1,4 @@
-package com.uday.multithreading;
+package com.uday.multithread;
 
 import java.util.concurrent.LinkedBlockingQueue;
 

@@ -37,8 +37,12 @@ public class TreeNode {
 
 	public void setRight(TreeNode right) {
 		this.right = right;
-	} 
-	
-	
+	}
+
+	public void printNodeWithComma(){
+		System.out.print(this.getData()+",");
+	}
+
+
 
 }

@@ -1,6 +1,5 @@
 package com.uday.dst.queue;
 
-import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -13,9 +12,7 @@ public class ProducerConsumerUsingBQ {
 		boolean isProducer; 
 		
 		String name;
-		
-		static Object lock = new Object();
-		
+
 		public ProducerConsumer(String name, boolean isProducer, 
 				BlockingQueue<Integer> sharedQ){
 			this.isProducer = isProducer; 

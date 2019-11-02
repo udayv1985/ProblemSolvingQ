@@ -12,8 +12,10 @@ public class CelebrityProblem {
 		for(int i =0; i <party.length; i++){
 			party[i] = new Person();
 		}
-		Random r = new Random();		
-		party[r.nextInt(n-1)].setCeleb();
+		Random r = new Random();
+		int celeb_index = r.nextInt(n-1);
+		party[celeb_index].setCeleb();
+		System.out.println("celeb is at :"+ celeb_index);
 	}
 	
 	
@@ -44,7 +46,7 @@ public class CelebrityProblem {
 		}
 	}
 	
-	public Person findCelebrity(){
+	public int findCelebrity(){
 		int i,j;
 		for(i = 0,j=party.length-1; j>-1 && i<party.length-1 && i!=j;){
 			boolean iknowsJ = party[i].knows(party[j]);
@@ -61,12 +63,12 @@ public class CelebrityProblem {
 			}
 		}
 		System.out.println(i+","+j);
-		return party[j];
+		return j;
 	}
 	
 	public static void main(String[] args){
-		CelebrityProblem p = new CelebrityProblem(10000);
-		System.out.println(p.findCelebrity().name);
+		CelebrityProblem p = new CelebrityProblem(10);
+		System.out.println("celeb found at : "+p.findCelebrity());
 		//Arrays.asList(p.party).stream().forEach(a->System.out.println(a.name));
 	}
 }

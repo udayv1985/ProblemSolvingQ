@@ -29,7 +29,7 @@ public class SlidingWindowSum {
 			countM.put(a[i], 
 					(null!=countM.get(a[i])?countM.get(a[i])+1:1));
 		}
-		countM.forEach((e,v) -> System.out.print(e+","));
+		countM.forEach((e,v) -> System.out.println(e+":"+v));
 		System.out.println();
 		for(int i =k; i <a.length; i++){
 			countM.put(a[i], 
@@ -41,7 +41,7 @@ public class SlidingWindowSum {
 			else{
 				countM.put(a[i-k], oldE-1);
 			}
-			countM.forEach((e,v) -> System.out.print(e+","));
+			countM.forEach((e,v) -> System.out.println(e+":"+v));
 			System.out.println();
 		}		
 	}

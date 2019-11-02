@@ -3,7 +3,7 @@ package com.uday.design.elevator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class ElevatorSystem implements RequestProcessor,Runnable {
+public class ElevatorControl implements RequestProcessor,Runnable {
 	
 	private Elevator elevator;
 	

@@ -1,4 +1,4 @@
-package com.uday.multithreading;
+package com.uday.multithread;
 
 public class OddEvenThread implements Runnable {
 	

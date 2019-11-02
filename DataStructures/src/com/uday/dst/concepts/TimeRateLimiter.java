@@ -1,32 +1,37 @@
 package com.uday.dst.concepts;
 
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.*;
 
-public class RateLimiter {
-
-    private long refillRate;
+public class TimeRateLimiter {
 
     private Semaphore semaphore;
 
     private int maxPermits;
 
+    public TimeRateLimiter init(int maxPermits, int time, TimeUnit timeUnit) {
+        TimeRateLimiter timeRateLimiter = new TimeRateLimiter(maxPermits);
+        this.scheduledRefill(time, timeUnit);
+        return timeRateLimiter;
+    }
 
-    public RateLimiter(int maxPermits){
+
+    public TimeRateLimiter(int maxPermits) {
         this.maxPermits = maxPermits;
-        Semaphore semaphore = new Semaphore(maxPermits);
+        semaphore = new Semaphore(maxPermits);
     }
 
-    public synchronized boolean isAllowed(int permits){
-        return semaphore.tryAcquire(permits);
+    public boolean isAllowed(int permits, long waitTimeMs) throws InterruptedException {
+        return semaphore.tryAcquire(permits, waitTimeMs, TimeUnit.MILLISECONDS);
     }
 
-    public void scheduledReplinshment(){
-        ThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(1);
-        scheduler.execute(()-{
-            System.nanoTime();
-        });
-        scheduler.shutdown();
+    private void refill() {
+        semaphore.release(maxPermits - semaphore.availablePermits());
+    }
+
+    public void scheduledRefill(int time, TimeUnit timeUnit) {
+        ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1);
+        scheduledExecutorService.scheduleWithFixedDelay(() -> {
+            refill();
+        }, 0, time, timeUnit);
     }
 }

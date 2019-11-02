@@ -200,7 +200,13 @@ public class BSTQs {
         
         //printBottomView(bst2);
         //zigZagTransversal(bst2);
-        System.out.println(findLevel(bst2,14));
+        //System.out.println(findLevel(bst2,14));
+
+        bst2.postOrderTransversal();
+
+        findPath(bst2,14);
+
+
 	}
 	
 	public static TreeNode lca(int n1, int n2, TreeNode root){
@@ -234,6 +240,30 @@ public class BSTQs {
 			return levelUtil(n.getRight(),d,level+1);
 		}
 		return l;
+	}
+
+	public static void findPath(BST bst, int d){
+		List<TreeNode> path = new ArrayList<>();
+		pathUtil(bst.getRoot(),d,path);
+		if(path.size()>0){
+			path.forEach( n -> System.out.println(n.getData()));
+		}
+		else{
+			System.out.println("No path found.");
+		}
+
+	}
+
+	private static boolean pathUtil(TreeNode node, int d, List<TreeNode> path){
+		if(null == node){
+			return false;
+		}
+		path.add(node);
+		if(node.getData() == d || pathUtil(node.getLeft(),d,path) || pathUtil(node.getRight(),d,path)){
+			return true;
+		}
+		path.remove(node);
+		return false;
 	}
 
 }

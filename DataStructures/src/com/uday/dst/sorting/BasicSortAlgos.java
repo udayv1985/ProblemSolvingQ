@@ -46,10 +46,11 @@ public class BasicSortAlgos {
 		return arr; 
 	}
 	
-	public static void swayArrayElements(int arr[], int i, int min_index) {
+	public static int[] swayArrayElements(int arr[], int i, int j) {
 		int temp = arr[i];
-		arr[i] = arr[min_index];
-		arr[min_index] = temp;
+		arr[i] = arr[j];
+		arr[j] = temp;
+		return arr;
 	}
 
 	public static void main(String args[]){

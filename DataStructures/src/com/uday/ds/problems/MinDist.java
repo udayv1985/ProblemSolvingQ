@@ -7,14 +7,16 @@ public class MinDist {
 		int min = Integer.MAX_VALUE;
 		int idx_x = -100;
 		int idx_y = -100;
+		boolean lastSetX = false;
 		for(int i =0; i<arr.length; i++){
-			if(arr[i]==x){
+			if(arr[i]==x && !(x ==y && lastSetX)){
 				//processFind(idx_x,idx_y,i,min);
 				idx_x = i;
 				int diff = idx_x-idx_y;
 				if(diff<min){
 					min = diff;
 				}
+				lastSetX = true;
 			}
 			else if(arr[i]==y){
 				//processFind(idx_y,idx_x,i,min);
@@ -23,6 +25,7 @@ public class MinDist {
 				if(diff<min){
 					min = diff;
 				}
+				lastSetX = false;
 			}
 		}
 		return min;
@@ -33,8 +36,8 @@ public class MinDist {
 	public static void main(String[] args){
 		 int arr[] = {3, 5, 4, 2, 6, 5, 6, 6, 5, 4, 8, 3}; 
 	        int n = arr.length; 
-	        int x = 3; 
-	        int y = 6; 
+	        int x = 6;
+	        int y = 6;
 	  
 	        System.out.println("Minimum distance between " + x + " and " + y  
 	                + " is " + minDist(arr,x, y)); 

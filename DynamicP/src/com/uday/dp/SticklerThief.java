@@ -1,5 +1,6 @@
 package com.uday.dp;
 
+// same as max sum without consecutive two elements problem
 public class SticklerThief {
 	
 	public static int maxAmt(int[] a, int n){

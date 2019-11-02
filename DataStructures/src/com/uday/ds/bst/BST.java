@@ -4,9 +4,9 @@ import java.util.*;
 
 public class BST {
 	
-	private TreeNode root; 
-	
-	public static enum TREE_VIEW {
+	TreeNode root;
+
+	public enum TREE_VIEW {
 		RIGHT, LEFT;
 	}
 	
@@ -129,6 +129,48 @@ public class BST {
 		
 	}
 
+	public void inOrderTransversal(){
+		inOrderTransversal(this.root);
+		System.out.println();
+	}
+
+	private void inOrderTransversal(TreeNode node){
+		if(null == node){
+			return;
+		}
+		inOrderTransversal(node.left);
+		System.out.print(node.getData()+",");
+		inOrderTransversal(node.right);
+	}
+
+	public void preOrderTransversal(){
+		preOrderTransversal(this.root);
+		System.out.println();
+	}
+
+	private void preOrderTransversal(TreeNode node){
+		if(null == node){
+			return;
+		}
+		System.out.print(node.getData()+",");
+		preOrderTransversal(node.left);
+		preOrderTransversal(node.right);
+	}
+
+	public void postOrderTransversal(){
+		postOrderTransversal(this.root);
+		System.out.println();
+	}
+
+	private void postOrderTransversal(TreeNode node){
+		if(null == node){
+			return;
+		}
+		postOrderTransversal(node.left);
+		postOrderTransversal(node.right);
+		System.out.print(node.getData()+",");
+	}
+
 	public TreeNode getRoot() {
 		return root;
 	}
@@ -144,7 +186,7 @@ public class BST {
 	public static void setMaxLevel(int maxLevel) {
 		BST.maxLevel = maxLevel;
 	}
-	
-	
+
+
 
 }

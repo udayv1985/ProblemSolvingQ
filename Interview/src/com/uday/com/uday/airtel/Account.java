@@ -1,8 +1,12 @@
 package com.uday.com.uday.airtel;
 
-public class Transaction {
+public class Account {
 
     private int balance = 0;
+
+    public Account(int b){
+        this.balance = b;
+    }
 
     public int getBalance(){
         return this.balance;
