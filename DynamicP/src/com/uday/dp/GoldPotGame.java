@@ -3,6 +3,13 @@ package com.uday.dp;
 import java.util.Arrays;
 
 public class GoldPotGame {
+    
+    /*
+    In Pots of gold game, there are two players A & B and pots of gold arranged in a line, each containing some gold coins. 
+    The players can see how many coins are there in each gold pot and each player gets alternating turns in which the player 
+    can pick a pot from one of the ends of the line. The winner is the player which has a higher number of coins at the end. 
+    The objective is to “maximize” the number of coins collected by A, assuming B also plays optimally and A starts the game.
+    */
 
     private static int optimize(int[] a, int i, int j, int sum) {
 
