@@ -1,7 +1,8 @@
 package com.uday.ds.problems;
 
 /*
-Given an increasing sequence a[], we need to find the K-th missing contiguous element in the increasing sequence which is not present in the sequence. If no k-th missing element is there output -1. 
+Given an increasing sequence a[], we need to find the K-th missing contiguous element in the increasing sequence which is not present in the sequence. 
+If no k-th missing element is there output -1. 
 Examples : 
 
 Input : a[] = {2, 3, 5, 9, 10};   
